@@ -392,6 +392,22 @@
 .snaarp-360-page .s360-hero-row [data-dc-tpl="286"] {
   flex: 0 1 440px !important; min-width: 0 !important; max-width: 460px !important; margin-left: auto !important;
 }
+
+/* ---- Desktop / laptop (981-1280): keep the 2-column hero from wrapping ----
+   At these widths the content column (max-width 820) + the fixed form (440)
+   plus the gap exceed the row, so the form dropped onto a second row. Set the
+   row to nowrap and let the content column SHRINK (flex:1 1 0) so the form
+   stays beside it - matching the large-screen layout. Below 981 it stacks. */
+@media (min-width: 981px) and (max-width: 1280px) {
+  .snaarp-360-page .s360-hero-row { flex-wrap: nowrap !important; gap: 32px !important; }
+  .snaarp-360-page .s360-hero-row [data-dc-tpl="75"] {
+    flex: 1 1 0% !important; min-width: 0 !important; max-width: none !important;
+  }
+  .snaarp-360-page .s360-hero-row [data-dc-tpl="286"] {
+    flex: 0 0 400px !important; min-width: 0 !important; max-width: 400px !important; margin-left: 0 !important;
+  }
+}
+
 @media (max-width: 980px) {
   /* stack: content first, form second, both full width */
   .snaarp-360-page .s360-hero-row [data-dc-tpl="75"],
